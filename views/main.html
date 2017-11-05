@@ -1,0 +1,27 @@
+<div layout="row" layout-align="start start" layout-fill>
+
+  <md-sidenav class="md-sidenav-left" md-component-id="center"
+              md-whiteframe="1" md-is-locked-open="$mdMedia('gt-sm')"
+              layout-fill layout="column" flex-gt-md="20"
+              style="overflow:hidden;" layout-align="start center">
+
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools" layout-align="center center">MUSITECA</h1>
+    </md-toolbar>
+
+    <md-content layout-fill layout="column" flex="100" class="hide-scrollbar">
+    	<md-button ng-click="mainCtrl.goHome()">Home</md-button>
+    	<md-button ng-click="mainCtrl.goArtist()">Artistas</md-button>
+    </md-content>
+
+  </md-sidenav>
+
+	<div ui-view="content" layout="row" layoyt-align="center center" layout-fill"></div>
+	
+</div>
+
+
+
+
+
+
