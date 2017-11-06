@@ -42,6 +42,8 @@
 		</div>
 	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center">
-		<md-button class="md-raised md-primary" ng-click="musicCtrl.addMusic()">Adicionar Música</md-button>
+		<md-button class="md-raised md-primary" ng-click="musicCtrl.addMusic()" ng-disabled="musicForm.$invalid">
+			Adicionar Música
+		</md-button>
 	</md-card-actions>
 </md-card>
