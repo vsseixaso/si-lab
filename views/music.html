@@ -1,49 +1,51 @@
-<md-card layout="column">
+<md-card layout="column" style="min-height:100vh;">
 	<md-card-content>
-			<form name="musicForm">
-				<div layout="column">
-			    	<md-input-container class="md-block" flex-gt-xs>
-				        <label>Nome</label>
-				        <input type="text" name="name" ng-required="true" ng-model="musicCtrl.name">
-				        <div ng-messages='musicForm.name.$error'>
-				            <div ng-message="required">Este campo é obrigatório!</div>
-				        </div>
-			        </md-input-container>
-			        <md-input-container class="md-block" flex-gt-xs flex="100">
-				        <label>Artista</label>
-				        <input type="text" name="artist" ng-required="true" ng-model="musicCtrl.artist">
-				        <div ng-messages='musicForm.artist.$error'>
-				            <div ng-message="required">Este campo é obrigatório!</div>
-				        </div>
-			        </md-input-container>
-			        <md-input-container class="md-block" flex-gt-xs flex="100">
-				        <label>Álbum</label>
-				        <input type="text" name="album" ng-required="true" ng-model="musicCtrl.album">
-				        <div ng-messages='musicForm.album.$error'>
-				            <div ng-message="required">Este campo é obrigatório!</div>
-				        </div>
-			        </md-input-container>
-			        <md-input-container class="md-block" flex-gt-xs flex="100">
-				        <label>Ano de Lançamento</label>
-				        <input type="text" name="year" ng-required="true" ng-model="musicCtrl.year">
-				        <div ng-messages='musicForm.year.$error'>
-				            <div ng-message="required">Este campo é obrigatório!</div>
-				        </div>
-			        </md-input-container>
-			        <md-input-container class="md-block" flex-gt-xs flex="100">
-				        <label>Duração</label>
-				        <input type="text" name="duration" ng-required="true" ng-model="musicCtrl.duration">
-				        <div ng-messages='musicForm.duration.$error'>
-				            <div ng-message="required">Este campo é obrigatório!</div>
-				        </div>
-			        </md-input-container>
-			    </div>
-			</form>
-		</div>
+		<md-card class="md-theme-indigo">
+	      	<h1 class="md-toolbar-tools" layout-align="center center">Adicionar Música</h1>
+	    </md-card>
+		<form name="musicForm">
+			<div layout="column">
+		    	<md-input-container class="md-block" flex-gt-xs>
+			        <label>Nome</label>
+			        <input type="text" name="name" ng-required="true" ng-model="musicCtrl.name">
+			        <div ng-messages='musicForm.name.$error'>
+			            <div ng-message="required">Este campo é obrigatório!</div>
+			        </div>
+		        </md-input-container>
+		        <md-input-container class="md-block" flex-gt-xs flex="100">
+			        <label>Artista</label>
+			        <input type="text" name="artist" ng-required="true" ng-model="musicCtrl.artist">
+			        <div ng-messages='musicForm.artist.$error'>
+			            <div ng-message="required">Este campo é obrigatório!</div>
+			        </div>
+		        </md-input-container>
+		        <md-input-container class="md-block" flex-gt-xs flex="100">
+			        <label>Álbum</label>
+			        <input type="text" name="album" ng-required="true" ng-model="musicCtrl.album">
+			        <div ng-messages='musicForm.album.$error'>
+			            <div ng-message="required">Este campo é obrigatório!</div>
+			        </div>
+		        </md-input-container>
+		        <md-input-container class="md-block" flex-gt-xs flex="100">
+			        <label>Ano de Lançamento</label>
+			        <input type="text" name="year" ng-required="true" ng-model="musicCtrl.year">
+			        <div ng-messages='musicForm.year.$error'>
+			            <div ng-message="required">Este campo é obrigatório!</div>
+			        </div>
+		        </md-input-container>
+		        <md-input-container class="md-block" flex-gt-xs flex="100">
+			        <label>Duração</label>
+			        <input type="text" name="duration" ng-required="true" ng-model="musicCtrl.duration">
+			        <div ng-messages='musicForm.duration.$error'>
+			            <div ng-message="required">Este campo é obrigatório!</div>
+			        </div>
+		        </md-input-container>
+		    </div>
+		</form>
 	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center">
 		<md-button class="md-raised md-primary" ng-click="musicCtrl.addMusic()" ng-disabled="musicForm.$invalid">
-			Adicionar Música
+			Submeter
 		</md-button>
 	</md-card-actions>
 </md-card>

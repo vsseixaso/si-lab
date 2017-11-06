@@ -20,7 +20,7 @@
                 musicCtrl.showConfirmDialog(music, ev);
             } else {
                 musicCtrl.user.addMusic(music);
-                ServiceUser.showToast('Música adicionada com sucesso');
+                ServiceUser.showToast('Álbum criado e música adicionada com sucesso');
             }
 
             clearFields();
@@ -30,7 +30,7 @@
             var confirm = $mdDialog.confirm()
             .clickOutsideToClose(true)
             .title('Adicionar Música')
-            .textContent('Esse álbum já existe, deseja adicionar a música no álbum existente?.')
+            .textContent('Esse álbum já existe, deseja adicionar a música no mesmo?')
             .ariaLabel('Adicionar Música')
             .targetEvent(ev)
             .ok('Adicionar')
