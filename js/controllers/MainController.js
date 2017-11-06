@@ -7,10 +7,15 @@
 
     mainCtrl.goHome = function goHome() {
       $state.go("app.home");
-	};
+	  };
 
-	mainCtrl.goArtist = function goArtist() {
+  	mainCtrl.goArtist = function goArtist() {
       $state.go("app.artist");
-	};
+  	};
+
+    mainCtrl.goMusic = function goMusic() {
+      $state.go("app.music");
+    };
+
   });
 })();

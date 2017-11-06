@@ -6,7 +6,7 @@
     var artistCtrl = this;
     artistCtrl.user = ServiceUser.user;
 
-    artistCtrl.addArtist = function addArtist(dirty) {
+    artistCtrl.addArtist = function addArtist() {
 	    if (artistCtrl.name) {
 	    	var data = {
 	    		name: artistCtrl.name,
@@ -20,7 +20,7 @@
 	    		ServiceUser.showToast("Artista adicionado com sucesso");
 	    	}
 
-	    } else if (!artistCtrl.name && dirty) {
+	    } else if (!artistCtrl.name) {
 	    	ServiceUser.showToast("O nome do artista é obrigatório");
 	    }
 	    artistCtrl.name = "";

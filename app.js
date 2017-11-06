@@ -26,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/js', express.static(__dirname + '/js/'));
+app.use('/js/controllers', express.static(__dirname + '/js/controllers/'));
+app.use('/js/models', express.static(__dirname + '/js/models/'));
 app.use('/views', express.static(__dirname + '/views/'));
 
 // catch 404 and forward to error handler
