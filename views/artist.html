@@ -1,8 +1,6 @@
 <md-card layout="column" style="min-height:100vh;">
 	<md-card-content>
-		<md-card class="md-theme-indigo">
-	      	<h1 class="md-toolbar-tools" layout-align="center center">Adicionar Artista</h1>
-	    </md-card>
+	    <h1 class="md-toolbar-tools" layout-align="center center">Adicionar Artista</h1>
 		<form name="artistForm">
 			<div layout="column">
 		    	<md-input-container class="md-block" flex-gt-xs>
@@ -26,3 +24,21 @@
 		</md-button>
 	</md-card-actions>
 </md-card>
+
+<div layout="column" style="min-height:100vh; min-width: 765px;">
+	<md-card >
+		<md-card-content layout="column">
+		    <h1 class="md-toolbar-tools" layout-align="center center">Pesquisar Artista</h1>
+			<md-input-container class="md-block" flex-gt-xs>
+		        <label>Nome</label>
+		        <textarea type="text" name="name" ng-model="artistCtrl.nameToSearch"></textarea>
+	    	</md-input-container>
+		    <div layout="row" layout-align="end center" style="margin-top: -30px;">
+		    	<md-button class="md-raised" ng-click="artistCtrl.search()">
+					Buscar
+				</md-button>
+			</div>
+		</md-card-content>
+	</md-card>
+
+</div>
