@@ -38,7 +38,6 @@
                 artist.isFavorite = false;
                 ServiceUser.showToast("Artista removido dos favoritos");
             }, function cancel() {
-                artist.isFavorite = true;
                 ServiceUser.showToast("Operação cancelada");
             });
       } else {
