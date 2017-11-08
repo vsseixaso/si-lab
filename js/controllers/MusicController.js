@@ -30,7 +30,7 @@
             var confirm = $mdDialog.confirm()
             .clickOutsideToClose(true)
             .title('Adicionar Música')
-            .textContent('Esse álbum já existe, deseja adicionar a música no mesmo?')
+            .textContent('Esse álbum já existe, deseja adicionar a música ao mesmo?')
             .targetEvent(ev)
             .ok('Adicionar')
             .cancel('Cancelar');
