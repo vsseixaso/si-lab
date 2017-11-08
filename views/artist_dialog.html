@@ -7,13 +7,21 @@
 			   	width="100px;" height="100px;"/>
 			</div>
 			<md-card-content layout="column" layout-align="start start">
-				Nome: {{dialogCtrl.artist.name}}
+				<div class="md-list-item-text" layout="row">
+			   		Nome: {{dialogCtrl.artist.name}}
+			    </div>
+
 				<md-list ng-if="dialogCtrl.hasAlbuns()" layout="column" layout-align="start center">
-					Álbuns:
+					</md-button>
+					    <div class="md-list-item-text" layout="row">
+					   		Álbuns:
+					    </div>
+					</md-list-item>
 					<md-list-item class="md-line" ng-repeat="album in dialogCtrl.albuns" layout="row" style="margin-bottom: -25px;">
 						{{album.name}}
 					</md-list-item>
 				</md-list>
+				
 				<div layout="row" layout-align="start"  style="margin-top: 30px;">
 					Nota:
 			        <md-radio-group ng-model="dialogCtrl.artist.grade" layout="row">
