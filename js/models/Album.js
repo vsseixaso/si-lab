@@ -3,9 +3,8 @@ function Album(data) {
 }
 
 Album.prototype.addMusic = function addMusic(music) {
-	var music = this.findMusic(music.name);
-	console.log(music);
-	if (music) {
+	var musicExists = this.findMusic(music.name);
+	if (musicExists) {
 		return false;
 	} else {
 		this.musics.push(music);
