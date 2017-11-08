@@ -35,3 +35,7 @@ User.prototype.findAlbum = function findAlbum(name) {
 	});
 	return album;
 };
+
+User.prototype.getArtists = function getArtists() {
+	return this.artists;
+};

@@ -1,21 +1,21 @@
 <md-card layout="column" style="min-height:100vh;">
 	<md-card-content>
-	    <h1 class="md-toolbar-tools" layout-align="center center">Adicionar Artista</h1>
+    <h1 class="md-toolbar-tools" layout-align="center center">Adicionar Artista</h1>
 		<form name="artistForm">
 			<div layout="column">
-		    	<md-input-container class="md-block" flex-gt-xs>
-			        <label>Nome</label>
-			        <input type="text" name="name" required ng-model="artistCtrl.name">
-			        <div ng-messages='artistForm.name.$error && artistForm.name.$dirty'>
-			            <div ng-message="required">Este campo é obrigatório!</div>
-			        </div>
-		        </md-input-container>
-		        <md-input-container class="md-block" flex-gt-xs flex="100">
-			        <label>Imagem</label>
-			        <input type="text" name="image"
-			            ng-model="artistCtrl.image">
-		        </md-input-container>
-		    </div>
+	    	<md-input-container class="md-block" flex-gt-xs>
+	        <label>Nome</label>
+	        <input type="text" name="name" required ng-model="artistCtrl.name">
+	        <div ng-messages="artistForm.name.$error && artistForm.name.$dirty">
+	            <div ng-message="required">Este campo é obrigatório!</div>
+	        </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs flex="100">
+	        <label>Link da Imagem</label>
+	        <input type="text" name="image"
+	            ng-model="artistCtrl.image">
+        </md-input-container>
+	    </div>
 		</form>
 	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center">
@@ -26,19 +26,27 @@
 </md-card>
 
 <div layout="column" style="min-height:100vh; min-width: 765px;">
-	<md-card >
+	<md-card style="min-height:100vh;">
 		<md-card-content layout="column">
-		    <h1 class="md-toolbar-tools" layout-align="center center">Pesquisar Artista</h1>
+	    <h1 class="md-toolbar-tools" layout-align="center center">Artistas</h1>
 			<md-input-container class="md-block" flex-gt-xs>
-		        <label>Nome</label>
-		        <textarea type="text" name="name" ng-model="artistCtrl.nameToSearch"></textarea>
-	    	</md-input-container>
-		    <div layout="row" layout-align="end center" style="margin-top: -30px;">
-		    	<md-button class="md-raised" ng-click="artistCtrl.search()">
-					Buscar
-				</md-button>
-			</div>
-		</md-card-content>
-	</md-card>
+        <label>Procurar artista</label>
+        <textarea type="text" name="name" ng-model="artistCtrl.nameToSearch"></textarea>
+    	</md-input-container>
+		</md-card-content> 
 
+		<md-list style="margin-top: -15px;" 
+		ng-repeat="artist in artistCtrl.artists | filter:artistCtrl.nameToSearch">
+
+			<md-list-item ng-click="artistCtrl.showDetails(artist)">
+		    <md-button class="md-icon-button" layout="row" layout-align="center center"
+		    ng-click="artistCtrl.changeStatus(artist)">
+		    	<md-icon ng-class="artist.isFavorite? 'md-warn': ''">grade</md-icon>
+		    </md-button>
+		    <div class="md-list-item-text" layout="row">
+		   		{{artist.name}}
+		    </div>
+			</md-list-item>			
+		</md-list>
+	</md-card>
 </div>

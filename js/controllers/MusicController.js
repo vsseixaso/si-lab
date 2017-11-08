@@ -31,7 +31,6 @@
             .clickOutsideToClose(true)
             .title('Adicionar Música')
             .textContent('Esse álbum já existe, deseja adicionar a música no mesmo?')
-            .ariaLabel('Adicionar Música')
             .targetEvent(ev)
             .ok('Adicionar')
             .cancel('Cancelar');
@@ -45,7 +44,7 @@
                 }
                 
             }, function cancel() {
-                ServiceUser.showToast('Cancelado');
+                ServiceUser.showToast('Operação cancelada');
             });
         };
 

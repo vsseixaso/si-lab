@@ -5,6 +5,7 @@
   app.controller("ArtistController", function ArtistController($state, $mdDialog, ServiceUser) {
     var artistCtrl = this;
     artistCtrl.user = ServiceUser.user;
+    artistCtrl.artists = artistCtrl.user.getArtists();
 
     artistCtrl.addArtist = function addArtist() {
     	var data = {
@@ -23,39 +24,33 @@
       artistCtrl.image = "";
     };
 
-  });
+    artistCtrl.changeStatus = function changeStatus(artist, ev) {
+      if (artist.isFavorite) {
+        var confirm = $mdDialog.confirm()
+            .clickOutsideToClose(true)
+            .title('Remover dos Favoritos')
+            .textContent('Deseja remover este artista dos favoritos?')
+            .targetEvent(ev)
+            .ok('Remover')
+            .cancel('Cancelar');
 
-  artistCtrl.search = function search(ev) {
-    artistCtrl.result = [];
-    _.forEach(artistCtrl.user.artists, function(artist) {
-      if(artist.name === artistCtrl.nameToSearch) {
-        result.push(artist);        
+            $mdDialog.show(confirm).then(function ok() {
+                artist.isFavorite = false;
+                ServiceUser.showToast("Artista removido dos favoritos");
+            }, function cancel() {
+                artist.isFavorite = true;
+                ServiceUser.showToast("Operação cancelada");
+            });
+      } else {
+        artist.isFavorite = true;
+        ServiceUser.showToast("Artista adicionado aos favoritos");
       }
-    });
+    };
 
-    if (!_.isEmpty(result)) {
-      $mdDialog.show({
-        controller: DialogController,
-        controllerAs: "controller",
-        templateUrl: 'views/artist_dialog.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        locals: {
-          result: artistCtrl.result,
-          user: artistCtrl.user,
-        }
-      });
-    } else {
-      ServiceUser.showToast("Nenhum artista foi encontrado");
-    }
-  };
+    artistCtrl.showDetails = function showDetails(artist, ev) {
+      
+    };
 
-  artistCtrl.DialogController = function DialogController(result, user) {
-    var dialogCtrl = this;
-    dialogCtrl.user = user;
-    dialogCtrl.result = result;
-
-  }
+  });
 
 })();
