@@ -7,7 +7,8 @@
     musicCtrl.user = ServiceUser.user;
 
     musicCtrl.addMusic = function addMusic(ev) {
-            var data = {name: musicCtrl.name, 
+            var data = {
+                name: musicCtrl.name, 
                 artist: musicCtrl.artist, 
                 album: musicCtrl.album, 
                 year: musicCtrl.year,
@@ -15,25 +16,33 @@
             };
             var music = new Music(data);
             
-            var album = musicCtrl.user.findAlbum(music.album);
-            if (album) {
-                musicCtrl.showConfirmDialog(music, ev);
+            if (!musicCtrl.user.findArtist(music.artist)) {
+                ServiceUser.showToast('Artista não existe! Operação cancelada');
             } else {
-                musicCtrl.user.addMusic(music);
-                ServiceUser.showToast('Álbum criado e música adicionada com sucesso');
+                var album = musicCtrl.user.findAlbum(music.album);
+                if (album) {
+                    musicCtrl.showDialog(music, ev);
+                } else {
+                    musicCtrl.user.addMusic(music);
+                    ServiceUser.showToast('Álbum criado e música adicionada com sucesso');
+                }
             }
 
-            clearFields();
+            musicCtrl.name = "";
+            musicCtrl.artist = "";
+            musicCtrl.album = "";
+            musicCtrl.year = "";
+            musicCtrl.duration = "";
         };
 
-        musicCtrl.showConfirmDialog = function showConfirmDialog(music, ev) {
+        musicCtrl.showDialog = function showDialog(music, ev) {
             var confirm = $mdDialog.confirm()
             .clickOutsideToClose(true)
             .title('Adicionar Música')
             .textContent('Esse álbum já existe, deseja adicionar a música ao mesmo?')
             .targetEvent(ev)
-            .ok('Adicionar')
-            .cancel('Cancelar');
+            .ok('Sim')
+            .cancel('Não');
 
             $mdDialog.show(confirm).then(function ok() {
                 var result = musicCtrl.user.addMusic(music);
@@ -46,14 +55,6 @@
             }, function cancel() {
                 ServiceUser.showToast('Operação cancelada');
             });
-        };
-
-        function clearFields() {
-            musicCtrl.name = "";
-            musicCtrl.artist = "";
-            musicCtrl.album = "";
-            musicCtrl.year = "";
-            musicCtrl.duration = "";
         };
 
   });

@@ -31,8 +31,8 @@
             .title('Remover dos Favoritos')
             .textContent('Deseja remover este artista dos favoritos?')
             .targetEvent(ev)
-            .ok('Remover')
-            .cancel('Cancelar');
+            .ok('Sim')
+            .cancel('Não');
 
             $mdDialog.show(confirm).then(function ok() {
                 artist.isFavorite = false;
@@ -47,7 +47,29 @@
     };
 
     artistCtrl.showDetails = function showDetails(artist, ev) {
-      
+        $mdDialog.show({
+            controller: DialogController,
+            controllerAs: "dialogCtrl",
+            templateUrl: 'views/artist_dialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals: {
+                user: artistCtrl.user,
+                artist: artist
+            }
+        });
+    };
+
+    function DialogController(user, artist) {
+        var dialogCtrl = this;
+        dialogCtrl.user = user;
+        dialogCtrl.artist = artist;
+        dialogCtrl.albuns = artist.albuns;
+
+        dialogCtrl.hasAlbuns = function hasAlbuns() {
+            return !_.isEmpty(artist.albuns);
+        };
     };
 
   });

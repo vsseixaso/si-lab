@@ -1,0 +1,34 @@
+<md-dialog layout-margin flex="30">
+	<md-dialog-content>
+		<md-card>
+			<div class="md-avatar" align="center" ng-if="dialogCtrl.artist.image" 
+			layout-align="center center" layout-margin>
+			    <img style="border-radius: 100%;" ng-src="{{dialogCtrl.artist.image}}"
+			   	width="100px;" height="100px;"/>
+			</div>
+			<md-card-content layout="column" layout-align="start start">
+				Nome: {{dialogCtrl.artist.name}}
+				<md-list ng-if="dialogCtrl.hasAlbuns()" layout="row" layout-align="start center">
+					Álbuns:
+					<md-list-item class="md-line" ng-repeat="album in dialogCtrl.albuns" layout="row">
+						{{album.name}}
+					</md-list-item>
+				</md-list>
+				<div layout="row" layout-align="start">
+					Nota:
+			        <md-radio-group ng-model="dialogCtrl.artist.grade" layout="row">
+				        <md-radio-button value="1">1</md-radio-button>
+				        <md-radio-button value="2">2</md-radio-button>
+				        <md-radio-button value="3">3</md-radio-button>
+				        <md-radio-button value="4">4</md-radio-button>
+				        <md-radio-button value="5">5</md-radio-button>
+				    </md-radio-group>
+				</div>
+				<md-input-container class="md-block" style="margin-top: 30px;">
+				    <label class="md-raised">Última música ouvida</label>
+				    <input type="text" name="name" ng-model="dialogCtrl.lastMusic">
+			    </md-input-container>
+			</md-card-content>
+		</md-card>
+	</md-dialog-content>
+</md-dialog>

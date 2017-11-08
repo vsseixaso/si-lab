@@ -6,9 +6,7 @@ function User(data) {
 }
 
 User.prototype.addArtist = function addArtist(artist) {
-	var artistAlreadyExists = _.find(this.artists, function (art) {
-		return art.name === artist.name;
-	});	
+	var artistAlreadyExists = this.findArtist(artist.name);
 	if (artistAlreadyExists) {
 		return false;
 	} else {
@@ -20,13 +18,23 @@ User.prototype.addArtist = function addArtist(artist) {
 User.prototype.addMusic = function addMusic(music) {
 	var album = this.findAlbum(music.album);
 	if (album) {
-		var worked = album.addMusic(music);
-		return worked;
+		var wasAdded = album.addMusic(music);
+		return wasAdded;
 	} else {
 		var data = {name: music.album, musics: [music]};
 		var newAlbum = new Album(data);
 		this.albuns.push(newAlbum);
+		
+		var artist = this.findArtist(music.artist);
+		artist.albuns.push(newAlbum);
 	}
+};
+
+User.prototype.findArtist = function findArtist(name) {
+	var artist = _.find(this.artists, function(art) {
+		return art.name === name;
+	});
+	return artist;
 };
 
 User.prototype.findAlbum = function findAlbum(name) {
