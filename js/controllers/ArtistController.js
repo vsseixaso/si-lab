@@ -20,8 +20,8 @@
     		ServiceUser.showToast("Artista adicionado com sucesso");
     	}
 
-      artistCtrl.name = "";
-      artistCtrl.image = "";
+        artistCtrl.name = "";
+        artistCtrl.image = "";
     };
 
     artistCtrl.changeStatus = function changeStatus(artist, ev) {

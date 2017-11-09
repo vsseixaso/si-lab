@@ -22,26 +22,26 @@
 
 	<md-card-content>
       	<h1 class="md-toolbar-tools" layout-align="center center">Adicionar Música na Playlist</h1>
-		<form name="addMuscicPLForm">
+		<form name="addMusicPLForm">
 			<div layout="column">
 		    	<md-input-container class="md-block" flex-gt-xs>
 			        <label>Nome da Música</label>
 			        <input type="text" name="music" ng-required="true" ng-model="playlistCtrl.music">
-			        <div ng-messages='addMuscicPLForm.music.$error'>
+			        <div ng-messages='addMusicPLForm.music.$error'>
 			            <div ng-message="required">Este campo é obrigatório!</div>
 			        </div>
 		        </md-input-container>
 		        <md-input-container class="md-block" flex-gt-xs>
 			        <label>Nome do Álbum</label>
-			        <input type="text" name="artist" ng-required="true" ng-model="playlistCtrl.album">
-			        <div ng-messages='addMuscicPLForm.album.$error'>
+			        <input type="text" name="album" ng-required="true" ng-model="playlistCtrl.album">
+			        <div ng-messages='addMusicPLForm.album.$error'>
 			            <div ng-message="required">Este campo é obrigatório!</div>
 			        </div>
 		        </md-input-container>
 		        <md-input-container class="md-block" flex-gt-xs>
 			        <label>Nome da Playlist</label>
 			        <input type="text" name="playlist" ng-required="true" ng-model="playlistCtrl.playlist">
-			        <div ng-messages='addMuscicPLForm.playlist.$error'>
+			        <div ng-messages='addMusicPLForm.playlist.$error'>
 			            <div ng-message="required">Este campo é obrigatório!</div>
 			        </div>
 		        </md-input-container>
@@ -50,7 +50,7 @@
 	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center" style="margin-top: -20px;">
 		<md-button class="md-raised md-primary" ng-click="playlistCtrl.addMusic()" 
-		ng-disabled="criarPLForm.$invalid">
+		ng-disabled="addMusicPLForm.$invalid">
 			Submeter
 		</md-button>
 	</md-card-actions>
@@ -66,8 +66,8 @@
 		ng-repeat="playlist in playlistCtrl.playlists">
 			<md-list-item ng-click="playlistCtrl.showDetails(playlist)">
 				<md-button class="md-icon-button" layout="row" layout-align="center center"
-			    ng-click="artistCtrl.removePlaylist(playlist)">
-			    	<md-icon>highligth_off</md-icon>
+			    ng-click="playlistCtrl.removePlaylist(playlist)" title="Excluir">
+			    	<md-icon style="color: red;">close</md-icon>
 			    </md-button>
 			    <div class="md-list-item-text" layout="row">
 			   		{{playlist.name}}

@@ -3,6 +3,7 @@ function User(data) {
 
 	this.artists = [];
 	this.albuns = [];
+	this.playlists = [];
 }
 
 User.prototype.addArtist = function addArtist(artist) {
@@ -30,6 +31,26 @@ User.prototype.addMusic = function addMusic(music) {
 	}
 };
 
+User.prototype.addPlaylist = function addPlaylist(playlist) {
+	var playlistAlreadyExists = this.findPlaylist(playlist.name);
+	if (playlistAlreadyExists) {
+		return false;
+	} else {
+		this.playlists.push(playlist);
+		return true;
+	}
+};
+
+User.prototype.removePlaylist = function removePlaylist(playlist) {
+	_.remove(this.playlists, function(pl) {
+		return pl.name === playlist.name;
+	});
+};
+
+User.prototype.addMusicInPlaylist = function addMusicInPlaylist(music, playlist) {
+	playlist.musics.push(music);
+};
+
 User.prototype.findArtist = function findArtist(name) {
 	var artist = _.find(this.artists, function(art) {
 		return art.name === name;
@@ -44,6 +65,17 @@ User.prototype.findAlbum = function findAlbum(name) {
 	return album;
 };
 
+User.prototype.findPlaylist = function findPlaylist(name) {
+	var playlist = _.find(this.playlists, function(pl) {
+		return pl.name === name;
+	});
+	return playlist;
+};
+
 User.prototype.getArtists = function getArtists() {
 	return this.artists;
+};
+
+User.prototype.getPlaylists = function getPlaylists() {
+	return this.playlists;
 };
