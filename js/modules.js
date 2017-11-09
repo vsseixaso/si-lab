@@ -46,6 +46,15 @@
             controller: "MusicController as musicCtrl"
           }
         }
+      })
+      .state("app.playlist", {
+        url: "/playlist",
+        views: {
+          content: {
+            templateUrl: "views/playlist.html",
+            controller: "PlaylistController as playlistCtrl"
+          }
+        }
       });
   });
 })();

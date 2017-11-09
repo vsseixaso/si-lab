@@ -17,5 +17,9 @@
       $state.go("app.music");
     };
 
+    mainCtrl.goPlaylist = function goPlaylist() {
+      $state.go("app.playlist");
+    };
+
   });
 })();

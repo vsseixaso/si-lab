@@ -1,4 +1,4 @@
-<md-card layout="column" style="min-height:100vh;">
+<md-card layout="column" style="min-height:100vh; min-width: 350px;">
 	<md-card-content>
     <h1 class="md-toolbar-tools" layout-align="center center">Adicionar Artista</h1>
 		<form name="artistForm">
@@ -24,7 +24,7 @@
 	</md-card-actions>
 </md-card>
 
-<div layout="column" style="min-height:100vh; min-width: 765px;">
+<div layout="column" style="min-height:100vh; min-width: 680px;">
 	<md-card style="min-height:100vh;">
 		<md-card-content layout="column">
 	    <h1 class="md-toolbar-tools" layout-align="center center">Artistas</h1>
@@ -38,10 +38,10 @@
 		ng-repeat="artist in artistCtrl.artists | filter:artistCtrl.nameToSearch">
 
 			<md-list-item ng-click="artistCtrl.showDetails(artist)">
-		    <md-button class="md-icon-button" layout="row" layout-align="center center"
-		    ng-click="artistCtrl.changeStatus(artist)">
-		    	<md-icon ng-class="artist.isFavorite? 'md-warn': ''">grade</md-icon>
-		    </md-button>
+			    <md-button class="md-icon-button" layout="row" layout-align="center center"
+			    ng-click="artistCtrl.changeStatus(artist)">
+			    	<md-icon ng-class="artist.isFavorite? 'md-warn': ''">grade</md-icon>
+			    </md-button>
 			    <div class="md-list-item-text" layout="row">
 			   		{{artist.name}}
 			    </div>
