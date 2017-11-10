@@ -12,17 +12,30 @@
 			    </div>
 
 				<md-list ng-if="dialogCtrl.hasAlbuns()" layout="column" layout-align="start center">
-					</md-button ng-click="null">
-					    <div class="md-list-item-text" layout="row">
-					   		Álbuns:
-					    </div>
-					</md-button>
-					<md-list-item class="md-line" ng-repeat="album in dialogCtrl.albuns" layout="row" style="margin-bottom: -25px;">
-						{{album.name}}
+				    <div class="md-list-item-text" layout="row" style="margin-top: 10px;">
+				   		Álbuns:
+				    </div>
+					<md-list-item class="md-line" ng-repeat="album in dialogCtrl.albuns" layout="column" style="margin-bottom: -15px;">
+						<div layout="row">
+							{{album.name}}
+							<md-button class="md-icon-button" layout="row" layout-align="center center"
+						    ng-click="album.showMusics = !album.showMusics" style="margin-top: -10px;">
+						    	<md-icon ng-if="!album.showMusics">keyboard_arrow_down</md-icon>
+						    	<md-icon ng-if="album.showMusics">keyboard_arrow_up</md-icon>
+						    </md-button>
+						</div>
+						<md-list ng-if="album.showMusics" layout="column" layout-align="start center">
+						    <div class="md-list-item-text" layout="row">
+						   		Músicas:
+						    </div>
+						    <md-list-item class="md-line" ng-repeat="music in album.musics" layout="column" style="margin-bottom: -15px; margin-top: -20px;">
+								{{music.name}}
+						    </md-list-item>
+						</md-list>
 					</md-list-item>
 				</md-list>
 				
-				<div layout="row" layout-align="start"  style="margin-top: 30px;">
+				<div layout="row" layout-align="start"  style="margin-top: 50px;">
 					Nota:&nbsp;&nbsp;
 			        <md-radio-group ng-model="dialogCtrl.artist.grade" layout="row">
 				        <md-radio-button value="1">1</md-radio-button>
