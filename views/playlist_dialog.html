@@ -1,0 +1,28 @@
+<md-dialog layout-margin flex="30">
+	<md-dialog-content>
+		<md-card>
+			<md-card-content layout="column" layout-align="start start">
+				<div class="md-list-item-text" layout="row">
+			   		Nome: {{dialogPLCtrl.playlistName}}
+			    </div>
+
+			    <md-list ng-if="dialogPLCtrl.hasMusics()" layout="column" layout-align="start center">
+			    	</md-button ng-click="null">
+					    <div class="md-list-item-text" layout="row">
+					   		Músicas:
+					    </div>
+					</md-button>
+					<md-list-item class="md-line" ng-repeat="music in dialogPLCtrl.playlist.musics" layout="row" style="margin-bottom: -15px;">
+						<md-button class="md-icon-button" layout="row" layout-align="center center"
+					    ng-click="dialogPLCtrl.removeMusic(music, $event)" title="Excluir">
+					    	<md-icon style="color: red;">close</md-icon>
+					    </md-button>
+					    <div class="md-list-item-text" layout="row">
+					   		{{music.name}}
+					    </div>
+					</md-list-item>
+			    </md-list>
+			</md-card-content>
+		</md-card>
+	</md-dialog-content>
+</md-dialog>

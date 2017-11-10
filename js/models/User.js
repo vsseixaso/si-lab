@@ -48,7 +48,13 @@ User.prototype.removePlaylist = function removePlaylist(playlist) {
 };
 
 User.prototype.addMusicInPlaylist = function addMusicInPlaylist(music, playlist) {
-	playlist.musics.push(music);
+	var musicAlreadyExists = _.includes(playlist.musics, music);
+	if (musicAlreadyExists) {
+		return false;
+	} else {
+		playlist.musics.push(music);
+		return true;
+	}
 };
 
 User.prototype.findArtist = function findArtist(name) {

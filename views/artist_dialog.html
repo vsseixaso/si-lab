@@ -12,11 +12,11 @@
 			    </div>
 
 				<md-list ng-if="dialogCtrl.hasAlbuns()" layout="column" layout-align="start center">
-					</md-button>
+					</md-button ng-click="null">
 					    <div class="md-list-item-text" layout="row">
 					   		Álbuns:
 					    </div>
-					</md-list-item>
+					</md-button>
 					<md-list-item class="md-line" ng-repeat="album in dialogCtrl.albuns" layout="row" style="margin-bottom: -25px;">
 						{{album.name}}
 					</md-list-item>
